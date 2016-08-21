@@ -4,7 +4,7 @@ const clothesRouter = require('./routers/clothesRouter');
 const app = new express();
 const router = express.Router();
 
-router.get('/items',(req,res)=>{
+router.get('/items',function(req,res){
   const str = "hello World!";
   res.json(str);
 });

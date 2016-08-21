@@ -1,9 +1,11 @@
-export default function reducer(state = {value:''}, action) {
+function reducer(state, action) {
   switch(action.type){
     case "GETTVALUE":
       return {
         value : action.value
       };
   }
-  return state;
+  return {value:""};
 }
+
+module.exports = reducer;

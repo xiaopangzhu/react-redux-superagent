@@ -1,20 +1,16 @@
-function makeSever() {
+const express = require('express');
+const bodyParser = require('body-parser');
 
-  const express = require('express');
-  const bodyParser = require('body-parser');
+const app = new express();
 
-  const app = new express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('./public'));
 
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended: true}));
-  app.use(express.static('./public'));
+app.use('/', require('./server/index'));
 
-  app.use('/', require('./server/index'));
+var server = app.listen(3000,function () {
+  console.log('listening at port %s', server.address().port);
+});
 
-  var server = app.listen(3000, function () {
-    console.log('listening at port %s', server.address().port);
-  });
-
-}
-
-module.exports =makeSever ;
+module.exports = server;

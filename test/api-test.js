@@ -4,16 +4,16 @@ describe('loading express', function () {
     var server;
 
     beforeEach(function () {
-        server = require('../server')();
+      server = require('../server');
     });
 
-    afterEach(function (done) {
-        server.close(done);
-    });
+    // afterEach(function () {
+    //     server.close();
+    // });
 
     it('responds to /', function testSlash(done) {
         request(server)
-            .get('/')
+            .get('/items')
             .expect(200, done);
     });
 
